@@ -1,0 +1,10 @@
+install docker then install rampart by docker (from ref address)
+
+rampart by docker, ref: https://hub.docker.com/r/ontresearch/artic_rampart
+
+# run rampart
+## the fastq file should not be compressed
+## target: the direction of passed fastq files
+## sudo, if the permission is denided
+
+docker run -it -e LOCAL_USER_ID=`id -u $USER` --mount type=bind,source="$(pwd)",target=/Analysis/data/rampart/ -p 3000:3000 -p 3001:3001 ontresearch/artic_rampart:latest
