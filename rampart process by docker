@@ -8,3 +8,17 @@ rampart by docker, ref: https://hub.docker.com/r/ontresearch/artic_rampart
 ## sudo, if the permission is denided
 
 docker run -it -e LOCAL_USER_ID=`id -u $USER` --mount type=bind,source="$(pwd)",target=/Analysis/data/rampart/ -p 3000:3000 -p 3001:3001 ontresearch/artic_rampart:latest
+
+
+
+# rampart Environment
+git clone --recursive https://github.com/artic-network/artic-ncov2019.git
+## faster environment construction tool
+conda install -c conda-forge mamba
+## environment construction
+time mamba env create -f artic-ncov2019/environment.yml
+conda activate artic-ncov2019
+## ensure rampart could work
+rampart --version
+## rampart activate
+rampart --protocol rampart/ --basecalledPath pass/
