@@ -30,6 +30,8 @@ artic guppyplex --skip-quality-check --min-length 400 --max-length 700
 artic minion --normalise 200 --threads 12 --scheme-directory path/cov2019_primer 
 --read-file {Barcode.fastq} --fast5-directory {In.fast5} --sequencing-summary path/sequencing_summary.txt ncov-2019 sample_name
 
+artic minion --medaka --normalise 0 --threads 12 --scheme-directory {scheme.dir} --read-file {IN.fastq} --medaka-model r941_prom_variant_g360 nCoV-2019 {In.fastq.name}
+
 # upload the concensus to nextstain
 
 # Reads visulization
