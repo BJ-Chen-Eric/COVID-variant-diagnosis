@@ -35,4 +35,15 @@ artic minion --medaka --normalise 0 --threads 12 --scheme-directory {scheme.dir}
 # upload the concensus to nextstain
 
 # Reads visulization
-tablet ot IGV
+tablet or IGV
+
+
+## pango
+### installnation, download and decompress pango
+cd {pango.dir}
+time mamba env create -f environment.yml 
+conda activate pangolin
+pip install .
+
+### useage
+
