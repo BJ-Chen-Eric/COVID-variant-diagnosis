@@ -16,15 +16,19 @@ rampart --version
 rampart --protocol rampart/ --basecalledPath {In.fastq}
 
 # basecalling
-guppy_basecaller -c dna_r9.4.1_450bps_hac.cfg -i {In.fast5} -s {In.fastq} -x cuda:0 -r
+guppy_basecaller -c dna_r9.4.1_450bps_hac.cfg -i 0906_fast5/ -s fastq/ -x cuda:0 -r
+##guppy_basecaller -c dna_r9.4.1_450bps_hac.cfg -i {In.fast5 under the directory} -s {out.fastq} -x cuda:0 -r
+
+
 
 # demultiplex
 guppy_barcoder --require_barcodes_both_ends -i ../pass/ -s  
 --arrangements_files "barcode_arrs_nb12.cfg barcode_arrs_nb24.cfg" -x cuda:0
 
 # Read filtering
-artic guppyplex --skip-quality-check --min-length 400 --max-length 700 
---directory output_directory/barcode03 --prefix run_name
+artic guppyplex --skip-quality-check --min-length 400 --max-length 700 --directory barcode02 --prefix bc2
+##artic guppyplex --skip-quality-check --min-length 400 --max-length 700 
+##--directory {In.dir} --prefix {in.prefix}
 
 # concensus generation
 artic minion --normalise 200 --threads 12 --scheme-directory path/cov2019_primer 
